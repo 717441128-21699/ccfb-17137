@@ -1,0 +1,16 @@
+{
+  "name": "bamboo-raft-game",
+  "version": "1.0.0",
+  "private": true,
+  "description": "竹乡景区放竹排小游戏 —— 山溪放排模拟",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "watch": "tsc -p tsconfig.json --watch",
+    "test:sim": "npm run build && node test/sim-test.mjs",
+    "serve": "node tools/serve.mjs"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0"
+  }
+}

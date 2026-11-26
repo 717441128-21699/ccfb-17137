@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>山溪放排 · 竹乡展馆小游戏</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="view"></canvas>
+
+<!-- HUD（放排操作页） -->
+<div id="hud">
+  <div class="hud-top">
+    <span id="hud-wx">☀ 晴</span>
+    <span id="hud-speed">0.0 m/s</span>
+    <span id="hud-depth">水深 --</span>
+    <span id="hud-phase"></span>
+    <button id="btn-quit">收工</button>
+  </div>
+  <div class="hud-progress"><div id="hud-progress-fill"></div><span class="dock-flag">⚑ 码头</span></div>
+  <div class="hud-bottom">
+    <div class="hud-box">藤条 <span id="hud-joints"></span></div>
+    <div class="hud-box">篙力 <div class="pole-meter"><div id="hud-pole-fill"></div></div></div>
+    <div id="hud-pole-warn"></div>
+  </div>
+  <div class="hud-hint">按住水面下篙：点住排头附近的水底撑排 · 撑得太猛会断藤 · 滚轮缩放</div>
+</div>
+<div id="toast"></div>
+
+<!-- 页一：河道地图 -->
+<div id="screen-map" class="screen">
+  <div class="panel wide">
+    <h1>山溪放排</h1>
+    <p class="lore">早年间，山里人把砍下的毛竹扎成排，顺着山溪放下去换盐米。
+    放排难在看水——急流、回水、浅滩，一排竹子几十米长，前头拐过去了，后头还在弯里。
+    老排工说：<i>「水大冲得快但容易撞，水小搁浅要下水推。」</i></p>
+    <h2>选一条山溪</h2>
+    <div id="river-list"></div>
+  </div>
+</div>
+
+<!-- 页二：竹排编组 -->
+<div id="screen-assembly" class="screen">
+  <div class="panel">
+    <h2>扎排 · <span id="asm-river-name"></span></h2>
+    <label>排节数 <b id="asm-sections-val"></b>
+      <input type="range" id="asm-sections" min="10" max="30" value="20">
+    </label>
+    <label>每节竹筒 <b id="asm-bamboos-val"></b>
+      <input type="range" id="asm-bamboos" min="6" max="12" value="8">
+    </label>
+    <div class="rattan-row">藤条
+      <button class="rattan-btn sel" data-v="old">老藤（柔韧，弯折余量大）</button>
+      <button class="rattan-btn" data-v="new">新藤（脆，但轻省）</button>
+    </div>
+    <div id="asm-stats"></div>
+    <ul id="asm-warn" class="warn"></ul>
+    <div class="btn-row">
+      <button id="asm-back">← 回地图</button>
+      <button id="asm-start" class="primary">开排 →</button>
+    </div>
+  </div>
+</div>
+
+<!-- 页四：码头结算 -->
+<div id="screen-settle" class="screen">
+  <div class="panel">
+    <h2 id="settle-title"></h2>
+    <div id="settle-rows"></div>
+    <p id="settle-rating"></p>
+    <div class="btn-row">
+      <button id="btn-map">回地图</button>
+      <button id="btn-again" class="primary">再放一趟</button>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="dist/main.js"></script>
+</body>
+</html>
